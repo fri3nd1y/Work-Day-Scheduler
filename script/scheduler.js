@@ -52,47 +52,47 @@ $(document).ready(function() {
     if (differentDate !== date) {
       var currentDate = moment().format('dddd, MMMM Do');
       var currentYear = moment().format('YYYY');
-      $('#title-date').html(currentDate);
-      $('#title-year').html(currentYear);
+      $('#currentDay').html(currentDate);
+      $('#currentYear').html(currentYear);
       dynamicTime();
     }
 
     if (day < 0) {
-      $('#title-date').html(differentDate);
-      $('#title-time').html(
-        'Here is what your schedule looked like for this day.'
+      $('#currentDay').html(differentDate);
+      $('#currentTime').html(
+        'Your schedule today.'
       );
-      $('#dynamic-time').hide();
+      $('#dynamicTime').hide();
 
       var dayOfYear = moment().dayOfYear();
       if (dayOfYear + day === 0) {
         currentYear = previousDate.format('YYYY');
-        $('#title-year').html(currentYear);
+        $('#currentYear').html(currentYear);
       }
     } 
     else if (day > 0) {
       currentYear = nextDate.format('YYYY');
-      $('#title-date').html(differentDate);
-      $('#title-time').html(
-        'Here is what your schedule looks like for this day so far.'
+      $('#currentDay').html(differentDate);
+      $('#currentTime').html(
+        'You schedule on this day.'
       );
-      $('#title-year').html(currentYear);
-      $('#dynamic-time').hide();
+      $('#currentYear').html(currentYear);
+      $('#dynamicTime').hide();
     } 
     else {
       currentYear = moment().format('YYYY');
-      $('#title-time').html(
-        'Here is your schedule for today. The current time is: '
+      $('#currentTime').html(
+        'Your schedule for today. The current time is: '
       );
-      $('#title-year').html(currentYear);
-      $('#dynamic-time').show();
+      $('#currentYear').html(currentYear);
+      $('#dynamicTime').show();
       dynamicTime();
     }
   }
 
   function dynamicTime() {
     var currentTime = moment().format('HH:mm:ss');
-    $('#dynamic-time').text(currentTime);
+    $('#dynamicTime').text(currentTime);
     setInterval(dynamicTime, 1000);
   }
 
